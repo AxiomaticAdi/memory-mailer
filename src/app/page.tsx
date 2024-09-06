@@ -24,6 +24,11 @@ export default function home() {
 								Create and send a postcard to your loved ones to share your
 								vacation experiences.
 							</p>
+							<Link href="/new-postcard" className="inline-block">
+								<button className="bg-primary text-white font-bold py-2 px-4 rounded hover:bg-primary-dark transition-colors">
+									Create a Postcard
+								</button>
+							</Link>
 						</div>
 						<div className="grid gap-6">
 							<div className="flex items-start gap-4">

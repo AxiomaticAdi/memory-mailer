@@ -3,17 +3,12 @@
  * @see https://v0.dev/t/yTkoPMraqAM
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+
+// Future idea: Add a preview of the postcard
+
 "use client";
 
 import { useState } from "react";
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -22,30 +17,23 @@ export default function Component() {
 	const [recipientCountry, setRecipientCountry] = useState("");
 	const [message, setMessage] = useState("");
 	const [template, setTemplate] = useState(1);
-	const [showPreview, setShowPreview] = useState(false);
-	const countries = [
-		{ value: "us", label: "United States" },
-		{ value: "ca", label: "Canada" },
-		{ value: "gb", label: "United Kingdom" },
-		{ value: "au", label: "Australia" },
-		{ value: "nz", label: "New Zealand" },
-	];
+	const countries = [{ value: "us", label: "United States" }];
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		alert("Your postcard will be mailed in 3 months");
 	};
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
+		<div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
 				<div>
 					<h2 className="text-center text-3xl font-extrabold text-gray-900">
-						Send a Digital Postcard
+						Send a Postcard
 					</h2>
 					<p className="mt-2 text-center text-sm text-gray-600">
-						Fill out the form below to create and send a digital postcard.
+						Submit the form below to send a postcard!
 					</p>
 				</div>
-				<form onSubmit={handleSubmit} className="space-y-6">
+				<form onSubmit={handleSubmit} className="space-y-6 font-mono">
 					<div>
 						<label
 							htmlFor="sender-name"
@@ -62,7 +50,7 @@ export default function Component() {
 								required
 								value={senderName}
 								onChange={(e) => setSenderName(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:bg-white focus:outline-none sm:text-sm"
 							/>
 						</div>
 					</div>
@@ -82,7 +70,7 @@ export default function Component() {
 								required
 								value={recipientName}
 								onChange={(e) => setRecipientName(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
 							/>
 						</div>
 					</div>
@@ -101,7 +89,7 @@ export default function Component() {
 								required
 								value={recipientAddress}
 								onChange={(e) => setRecipientAddress(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
 							/>
 						</div>
 					</div>
@@ -119,7 +107,7 @@ export default function Component() {
 								required
 								value={recipientCountry}
 								onChange={(e) => setRecipientCountry(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
 							>
 								<option value="">Select a country</option>
 								{countries.map((country) => (
@@ -146,7 +134,7 @@ export default function Component() {
 								required
 								value={message}
 								onChange={(e) => setMessage(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
 							/>
 							<p className="mt-2 text-sm text-gray-500">
 								{message.length}/200 characters
@@ -177,53 +165,16 @@ export default function Component() {
 							))}
 						</div>
 					</div>
-					<div className="flex items-center justify-between">
-						<button
-							type="button"
-							onClick={() => setShowPreview(true)}
-							className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-						>
-							Preview
-						</button>
+					<div className="flex items-center justify-end">
 						<button
 							type="submit"
-							className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+							className="bg-primary text-white font-bold py-2 px-4 rounded"
 						>
 							Send Postcard
 						</button>
 					</div>
 				</form>
 			</div>
-			{showPreview && (
-				<Dialog open={showPreview} onOpenChange={setShowPreview}>
-					<DialogContent className="sm:max-w-lg">
-						<DialogHeader>
-							<DialogTitle>Postcard Preview</DialogTitle>
-						</DialogHeader>
-						<div className="mt-4">
-							<img
-								src="/placeholder.svg"
-								alt={`Postcard Template ${template}`}
-								className="w-full h-auto rounded-md"
-							/>
-							<div className="mt-4">
-								<p className="font-medium">From: {senderName}</p>
-								<p className="font-medium">To: {recipientName}</p>
-								<p className="mt-2">{message}</p>
-							</div>
-						</div>
-						<DialogFooter>
-							<Button
-								variant="outline"
-								onClick={() => setShowPreview(false)}
-								className="mr-4"
-							>
-								Close
-							</Button>
-						</DialogFooter>
-					</DialogContent>
-				</Dialog>
-			)}
 		</div>
 	);
 }
