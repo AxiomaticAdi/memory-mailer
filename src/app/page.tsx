@@ -9,7 +9,7 @@ import FeatureDescription from "@/components/FeatureDescription";
 export default function home() {
 	return (
 		<div className="flex flex-col min-h-[100dvh]">
-			<header className="px-4 lg:px-6 h-14 flex items-center justify-between">
+			<header className="px-4 lg:px-6 h-14 flex items-center justify-start gap-2">
 				<StampIcon className="h-6 w-6" />
 				<span className="text-lg font-semibold">Vacation Postcards</span>
 			</header>
