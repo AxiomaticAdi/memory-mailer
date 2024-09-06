@@ -65,11 +65,11 @@ export default function home() {
 								<MailboxIcon className="w-8 h-8 text-primary" />
 								<div>
 									<h3 className="text-xl font-semibold">
-										We'll mail the postcard in a few months
+										We&apos;ll mail the postcard in a few months
 									</h3>
 									<p className="text-muted-foreground">
-										Sit back and relax, we'll handle the printing and mailing of
-										your postcard to your recipient.
+										Sit back and relax, we&apos;ll handle the printing and
+										mailing of your postcard to your recipient.
 									</p>
 								</div>
 							</div>
