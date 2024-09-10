@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
-import { Space_Mono } from "next/font/google";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import StampIcon from "@/icons/StampIcon";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +15,34 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body className="flex flex-col min-h-screen">
+				<header className="px-4 lg:px-6 h-14 flex items-center justify-start gap-2">
+					<StampIcon className="h-6 w-6" />
+					<span className="text-lg font-semibold">Vacation Postcards</span>
+				</header>
+				<main className="flex-grow">{children}</main>
+				<footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+					<p className="text-xs text-muted-foreground">
+						&copy; 2024 Vacation Postcards. All rights reserved.
+					</p>
+					<nav className="sm:ml-auto flex gap-4 sm:gap-6">
+						<Link
+							href="#"
+							className="text-xs hover:underline underline-offset-4"
+							prefetch={false}
+						>
+							Terms of Service
+						</Link>
+						<Link
+							href="#"
+							className="text-xs hover:underline underline-offset-4"
+							prefetch={false}
+						>
+							Privacy
+						</Link>
+					</nav>
+				</footer>
+			</body>
 		</html>
 	);
 }
