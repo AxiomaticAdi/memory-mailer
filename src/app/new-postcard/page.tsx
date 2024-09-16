@@ -14,10 +14,8 @@ export default function Component() {
 	const [senderName, setSenderName] = useState("");
 	const [recipientName, setRecipientName] = useState("");
 	const [recipientAddress, setRecipientAddress] = useState("");
-	const [recipientCountry, setRecipientCountry] = useState("");
 	const [message, setMessage] = useState("");
 	const [template, setTemplate] = useState(1);
-	const countries = [{ value: "us", label: "United States" }];
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		alert("Your postcard will be mailed in 3 months");
@@ -91,31 +89,6 @@ export default function Component() {
 								onChange={(e) => setRecipientAddress(e.target.value)}
 								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
 							/>
-						</div>
-					</div>
-					<div>
-						<label
-							htmlFor="recipient-country"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Recipient&apos;s Country
-						</label>
-						<div className="mt-1">
-							<select
-								id="recipient-country"
-								name="recipient-country"
-								required
-								value={recipientCountry}
-								onChange={(e) => setRecipientCountry(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-							>
-								<option value="">Select a country</option>
-								{countries.map((country) => (
-									<option key={country.value} value={country.value}>
-										{country.label}
-									</option>
-								))}
-							</select>
 						</div>
 					</div>
 					<div>
