@@ -1,11 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/yTkoPMraqAM
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-
-// Future idea: Add a preview of the postcard
-
 "use client";
 
 import { useState } from "react";
