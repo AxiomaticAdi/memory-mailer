@@ -1,17 +1,76 @@
 "use client";
 
 import { useState } from "react";
+import { FormData } from "../types";
+import { entryIdMapping, googleFormId } from "../constants";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
 	const [recipientName, setRecipientName] = useState("");
 	const [recipientAddress, setRecipientAddress] = useState("");
 	const [message, setMessage] = useState("");
-	const [template, setTemplate] = useState(1);
+	const [template, setTemplate] = useState("template_1");
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		alert("Your postcard will be mailed in 3 months");
+
+		const formId = googleFormId;
+		const formData: FormData[] = [
+			{
+				FieldName: "senderName",
+				EntryId: entryIdMapping.senderName,
+				Value: senderName,
+			},
+			{
+				FieldName: "recipientName",
+				EntryId: entryIdMapping.recipientName,
+				Value: recipientName,
+			},
+			{
+				FieldName: "recipientAddress",
+				EntryId: entryIdMapping.recipientAddress,
+				Value: recipientAddress,
+			},
+			{ FieldName: "message", EntryId: entryIdMapping.message, Value: message },
+			{
+				FieldName: "template",
+				EntryId: entryIdMapping.template,
+				Value: "template_1",
+			},
+		];
+
+		if (!senderName || !recipientName || !recipientAddress || !message) {
+			alert("Please fill in all the fields");
+			return;
+		}
+
+		const submitEndpoint = `${process.env.NEXT_PUBLIC_BACKEND_URL}/google-forms`;
+
+		fetch(submitEndpoint, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ formData, formId }),
+		})
+			.then((response) => response.json())
+			.then((data) => console.log(data));
+
+		alert("Your postcard will be mailed shortly!");
+
+		console.log(JSON.stringify({ formData, formId }));
+
+		return resetForm();
 	};
+
+	const resetForm = () => {
+		setSenderName("");
+		setRecipientName("");
+		setRecipientAddress("");
+		setMessage("");
+		setTemplate("template_1");
+	};
+
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
@@ -106,7 +165,7 @@ export default function Component() {
 							</p>
 						</div>
 					</div>
-					<div>
+					{/* <div>
 						<label className="block text-sm font-medium text-gray-700">
 							Postcard Template
 						</label>
@@ -129,7 +188,7 @@ export default function Component() {
 								</div>
 							))}
 						</div>
-					</div>
+					</div> */}
 					<div className="flex items-center justify-end">
 						<button
 							type="submit"
