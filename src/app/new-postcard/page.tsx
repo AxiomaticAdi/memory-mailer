@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FormData } from "../types";
 import { entryIdMapping, googleFormId } from "../constants";
+import { UploadButton } from "../../utils/uploadThing";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -165,6 +166,18 @@ export default function Component() {
 							</p>
 						</div>
 					</div>
+					<UploadButton
+						endpoint="imageUploader"
+						onClientUploadComplete={(res) => {
+							// Do something with the response
+							console.log("Files: ", res);
+							alert("Upload Completed");
+						}}
+						onUploadError={(error: Error) => {
+							// Do something with the error.
+							alert(`ERROR! ${error.message}`);
+						}}
+					/>
 					{/* <div>
 						<label className="block text-sm font-medium text-gray-700">
 							Postcard Template
