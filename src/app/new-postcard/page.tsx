@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FormData } from "../types";
 import { entryIdMapping, googleFormId } from "../constants";
-import { UploadButton } from "../../utils/uploadThing";
+import { UploadButton } from "@utils/uploadthing";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
