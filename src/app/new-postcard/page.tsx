@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FormData } from "../types";
 import { entryIdMapping, googleFormId } from "../constants";
 import { UploadButton } from "@utils/uploadthing";
+import Image from "next/image";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -11,6 +12,9 @@ export default function Component() {
 	const [recipientAddress, setRecipientAddress] = useState("");
 	const [message, setMessage] = useState("");
 	const [template, setTemplate] = useState("template_1");
+
+	const [imageOneUrl, setImageOneUrl] = useState("");
+	const [imageTwoUrl, setImageTwoUrl] = useState("");
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -71,6 +75,8 @@ export default function Component() {
 		setMessage("");
 		setTemplate("template_1");
 	};
+
+	const allowUpload = !imageOneUrl || !imageTwoUrl;
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
@@ -173,19 +179,46 @@ export default function Component() {
 						>
 							Photos
 						</label>
+						<p className="mt-2 text-sm text-gray-500">Optional - max 2</p>
 						<div className="mt-1">
-							<UploadButton
-								endpoint="imageUploader"
-								onClientUploadComplete={(res) => {
-									// Do something with the response
-									console.log("Files: ", res);
-									alert("Upload Completed");
-								}}
-								onUploadError={(error: Error) => {
-									// Do something with the error.
-									alert(`ERROR! ${error.message}`);
-								}}
-							/>
+							<div className="flex flex-wrap gap-2">
+								{imageOneUrl && (
+									<Image
+										src={imageOneUrl}
+										alt="Image One"
+										width={200}
+										height={200}
+										className="rounded-md"
+									/>
+								)}
+								{imageTwoUrl && (
+									<Image
+										src={imageTwoUrl}
+										alt="Image Two"
+										width={200}
+										height={200}
+										className="rounded-md"
+									/>
+								)}
+								{allowUpload && (
+									<UploadButton
+										endpoint="imageUploader"
+										onClientUploadComplete={(res) => {
+											console.log("Upload successful: ", res);
+											if (!imageOneUrl) {
+												return setImageOneUrl(res[0].url);
+											}
+											if (!imageTwoUrl) {
+												return setImageTwoUrl(res[0].url);
+											}
+										}}
+										onUploadError={(error: Error) => {
+											// Do something with the error.
+											alert(`ERROR! ${error.message}`);
+										}}
+									/>
+								)}
+							</div>
 						</div>
 					</div>
 
