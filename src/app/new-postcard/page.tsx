@@ -166,18 +166,29 @@ export default function Component() {
 							</p>
 						</div>
 					</div>
-					<UploadButton
-						endpoint="imageUploader"
-						onClientUploadComplete={(res) => {
-							// Do something with the response
-							console.log("Files: ", res);
-							alert("Upload Completed");
-						}}
-						onUploadError={(error: Error) => {
-							// Do something with the error.
-							alert(`ERROR! ${error.message}`);
-						}}
-					/>
+					<div>
+						<label
+							htmlFor="Images"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Photos
+						</label>
+						<div className="mt-1">
+							<UploadButton
+								endpoint="imageUploader"
+								onClientUploadComplete={(res) => {
+									// Do something with the response
+									console.log("Files: ", res);
+									alert("Upload Completed");
+								}}
+								onUploadError={(error: Error) => {
+									// Do something with the error.
+									alert(`ERROR! ${error.message}`);
+								}}
+							/>
+						</div>
+					</div>
+
 					{/* <div>
 						<label className="block text-sm font-medium text-gray-700">
 							Postcard Template
