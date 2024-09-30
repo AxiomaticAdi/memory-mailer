@@ -74,6 +74,9 @@ export default function Component() {
 		setRecipientAddress("");
 		setMessage("");
 		setTemplate("template_1");
+
+		setImageOneUrl("");
+		setImageTwoUrl("");
 	};
 
 	const allowUpload = !imageOneUrl || !imageTwoUrl;
