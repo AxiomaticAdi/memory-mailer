@@ -200,7 +200,9 @@ export default function Component() {
 										className="rounded-md"
 									/>
 								)}
-								{allowUpload && (
+							</div>
+							{allowUpload && (
+								<div className="flex justify-center mt-3">
 									<UploadButton
 										endpoint="imageUploader"
 										onClientUploadComplete={(res) => {
@@ -217,8 +219,8 @@ export default function Component() {
 											alert(`ERROR! ${error.message}`);
 										}}
 									/>
-								)}
-							</div>
+								</div>
+							)}
 						</div>
 					</div>
 
