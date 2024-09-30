@@ -42,6 +42,16 @@ export default function Component() {
 				EntryId: entryIdMapping.template,
 				Value: "template_1",
 			},
+			{
+				FieldName: "imageOneUrl",
+				EntryId: entryIdMapping.imageOneUrl,
+				Value: imageOneUrl,
+			},
+			{
+				FieldName: "imageTwoUrl",
+				EntryId: entryIdMapping.imageTwoUrl,
+				Value: imageTwoUrl,
+			},
 		];
 
 		if (!senderName || !recipientName || !recipientAddress || !message) {

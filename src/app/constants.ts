@@ -7,4 +7,6 @@ export const entryIdMapping = {
 	recipientAddress: "2004602767",
 	message: "1589722783",
 	template: "1610235733",
+	imageOneUrl: "1414496154",
+	imageTwoUrl: "877082837",
 };
