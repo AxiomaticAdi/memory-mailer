@@ -5,6 +5,7 @@ import { FormData } from "../types";
 import { entryIdMapping, googleFormId } from "../constants";
 import { UploadButton } from "@utils/uploadthing";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -90,6 +91,15 @@ export default function Component() {
 	};
 
 	const allowUpload = !imageOneUrl || !imageTwoUrl;
+
+	const handleDeleteImage = (imageNum: 1 | 2) => {
+		if (imageNum === 1) {
+			return setImageOneUrl("");
+		}
+		if (imageNum === 2) {
+			return setImageTwoUrl("");
+		}
+	};
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
@@ -196,22 +206,36 @@ export default function Component() {
 						<div className="mt-1">
 							<div className="flex flex-wrap gap-2">
 								{imageOneUrl && (
-									<Image
-										src={imageOneUrl}
-										alt="Image One"
-										width={200}
-										height={200}
-										className="rounded-md"
-									/>
+									<div className="relative">
+										<Image
+											src={imageOneUrl}
+											alt="Image One"
+											width={200}
+											height={200}
+										/>
+										<button
+											onClick={() => handleDeleteImage(1)}
+											className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+										>
+											<X size={16} className="text-gray-600" />
+										</button>
+									</div>
 								)}
 								{imageTwoUrl && (
-									<Image
-										src={imageTwoUrl}
-										alt="Image Two"
-										width={200}
-										height={200}
-										className="rounded-md"
-									/>
+									<div className="relative">
+										<Image
+											src={imageTwoUrl}
+											alt="Image Two"
+											width={200}
+											height={200}
+										/>
+										<button
+											onClick={() => handleDeleteImage(2)}
+											className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+										>
+											<X size={16} className="text-gray-600" />
+										</button>
+									</div>
 								)}
 							</div>
 							{allowUpload && (
