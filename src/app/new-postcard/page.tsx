@@ -274,31 +274,6 @@ export default function Component() {
 							)}
 						</div>
 					</div>
-
-					{/* <div>
-						<label className="block text-sm font-medium text-gray-700">
-							Postcard Template
-						</label>
-						<div className="mt-1 grid grid-cols-3 gap-3">
-							{[1, 2, 3].map((t) => (
-								<div
-									key={t}
-									className={`border-2 rounded-md cursor-pointer ${
-										template === t
-											? "border-primary-500 ring-2 ring-primary-500"
-											: "border-gray-300"
-									}`}
-									onClick={() => setTemplate(t)}
-								>
-									<img
-										src="/placeholder.svg"
-										alt={`Postcard Template ${t}`}
-										className="w-full h-24 object-cover rounded-md"
-									/>
-								</div>
-							))}
-						</div>
-					</div> */}
 					<div className="flex items-center justify-end">
 						<button
 							type="submit"
