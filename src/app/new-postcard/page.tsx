@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { FormData } from "../types";
-import { entryIdMapping, googleFormId } from "../constants";
-import { UploadButton } from "@utils/uploadthing";
-import Image from "next/image";
-import { X } from "lucide-react";
+import { FormData } from "@app/types";
+import { entryIdMapping, googleFormId } from "@app/constants";
+import FormPhotoUpload from "@sections/FormPhotoUpload";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -195,85 +193,14 @@ export default function Component() {
 							</p>
 						</div>
 					</div>
-					<div>
-						<label
-							htmlFor="Images"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Photos
-						</label>
-						<p className="mt-2 text-sm text-gray-500">Optional - max 2</p>
-						<div className="mt-1">
-							<div className="flex flex-wrap gap-2">
-								{imageOneUrl && (
-									<div className="relative">
-										<Image
-											src={imageOneUrl}
-											alt="Image One"
-											width={200}
-											height={200}
-										/>
-										<button
-											onClick={() => handleDeleteImage(1)}
-											className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
-										>
-											<X size={16} className="text-gray-600" />
-										</button>
-									</div>
-								)}
-								{imageTwoUrl && (
-									<div className="relative">
-										<Image
-											src={imageTwoUrl}
-											alt="Image Two"
-											width={200}
-											height={200}
-										/>
-										<button
-											onClick={() => handleDeleteImage(2)}
-											className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
-										>
-											<X size={16} className="text-gray-600" />
-										</button>
-									</div>
-								)}
-							</div>
-							{allowUpload && (
-								<div className="flex justify-center mt-3">
-									<UploadButton
-										endpoint="imageUploader"
-										onClientUploadComplete={(res) => {
-											console.log("Upload successful: ", res);
-											if (!imageOneUrl) {
-												return setImageOneUrl(res[0].url);
-											}
-											if (!imageTwoUrl) {
-												return setImageTwoUrl(res[0].url);
-											}
-										}}
-										onUploadError={(error: Error) => {
-											alert(`ERROR! ${error.message}`);
-										}}
-										appearance={{
-											button: {
-												background: "hsl(var(--primary))",
-												borderRadius: "0.25rem",
-											},
-										}}
-										content={{
-											button({ ready }) {
-												if (ready) return "Upload photo";
-												return "Getting ready...";
-											},
-											allowedContent() {
-												return "";
-											},
-										}}
-									/>
-								</div>
-							)}
-						</div>
-					</div>
+					<FormPhotoUpload
+						imageOneUrl={imageOneUrl}
+						setImageOneUrl={setImageOneUrl}
+						imageTwoUrl={imageTwoUrl}
+						setImageTwoUrl={setImageTwoUrl}
+						handleDeleteImage={handleDeleteImage}
+						allowUpload={allowUpload}
+					/>
 					<div className="flex items-center justify-end">
 						<button
 							type="submit"
