@@ -147,7 +147,7 @@ export default function Component() {
 								required
 								value={recipientName}
 								onChange={(e) => setRecipientName(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:bg-white focus:outline-none sm:text-sm"
 							/>
 						</div>
 					</div>
@@ -166,7 +166,7 @@ export default function Component() {
 								required
 								value={recipientAddress}
 								onChange={(e) => setRecipientAddress(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:bg-white focus:outline-none sm:text-sm"
 							/>
 						</div>
 					</div>
@@ -186,7 +186,7 @@ export default function Component() {
 								required
 								value={message}
 								onChange={(e) => setMessage(e.target.value)}
-								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:bg-white sm:text-sm"
+								className="appearance-none block w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md shadow-sm focus:bg-white focus:outline-none sm:text-sm"
 							/>
 							<p className="mt-2 text-sm text-gray-500">
 								{message.length}/200 characters
