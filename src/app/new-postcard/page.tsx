@@ -252,8 +252,22 @@ export default function Component() {
 											}
 										}}
 										onUploadError={(error: Error) => {
-											// Do something with the error.
 											alert(`ERROR! ${error.message}`);
+										}}
+										appearance={{
+											button: {
+												background: "hsl(var(--primary))",
+												borderRadius: "0.25rem",
+											},
+										}}
+										content={{
+											button({ ready }) {
+												if (ready) return "Upload photo";
+												return "Getting ready...";
+											},
+											allowedContent() {
+												return "";
+											},
 										}}
 									/>
 								</div>
