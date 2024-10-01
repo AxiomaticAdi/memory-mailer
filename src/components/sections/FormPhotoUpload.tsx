@@ -40,7 +40,7 @@ export default function FormPhotoUpload({
 							/>
 							<button
 								onClick={() => handleDeleteImage(1)}
-								className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+								className="absolute top-1 right-1 bg-white bg-opacity-75 rounded-full p-1 shadow-md"
 							>
 								<X size={16} className="text-gray-600" />
 							</button>
@@ -56,7 +56,7 @@ export default function FormPhotoUpload({
 							/>
 							<button
 								onClick={() => handleDeleteImage(2)}
-								className="absolute top-1 right-1 bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+								className="absolute top-1 right-1 bg-white bg-opacity-75 rounded-full p-1 shadow-md"
 							>
 								<X size={16} className="text-gray-600" />
 							</button>
