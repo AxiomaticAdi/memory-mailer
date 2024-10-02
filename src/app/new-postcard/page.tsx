@@ -4,7 +4,8 @@ import { useState } from "react";
 import { FormData } from "@app/types";
 import { entryIdMapping, googleFormId } from "@app/constants";
 import FormPhotoUpload from "@components/sections/FormPhotoUpload";
-import FormTemplatePicker from "../../components/sections/FormTemplatePicker";
+import FormTemplatePicker from "@components/sections/FormTemplatePicker";
+import { Separator } from "@/components/ui/separator";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
@@ -204,12 +205,15 @@ export default function Component() {
 						allowUpload={allowUpload}
 					/>
 
-					<div className="flex items-center justify-end">
+					<Separator />
+
+					<div className="flex flex-col items-center justify-center gap-2">
+						<p className="text-center text-lg">Ready to send?</p>
 						<button
 							type="submit"
-							className="bg-primary text-white font-bold py-2 px-4 rounded"
+							className="bg-green-300 hover:bg-green-500 text-white font-bold py-2 px-4 rounded"
 						>
-							Send Postcard
+							Ship it!
 						</button>
 					</div>
 				</form>
