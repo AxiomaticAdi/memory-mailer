@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { templateUrlMapping } from "@app/constants";
+import { templateUrlMappingFull, templateUrlMappingMini } from "@app/constants";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
@@ -35,7 +35,7 @@ export default function FormTemplatePicker({
 						onClick={() => setTemplate(t)}
 					>
 						<Image
-							src={templateUrlMapping[t]}
+							src={templateUrlMappingMini[t]}
 							alt={`Postcard ${t}`}
 							width={300}
 							height={200}
@@ -64,7 +64,7 @@ export default function FormTemplatePicker({
 					<DialogContent className="sm:max-w-[800px] rounded-md">
 						{openModal && (
 							<Image
-								src={templateUrlMapping[openModal]}
+								src={templateUrlMappingFull[openModal]}
 								alt={`Postcard ${openModal}`}
 								width={800}
 								height={533}
