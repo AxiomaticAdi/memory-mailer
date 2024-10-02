@@ -212,7 +212,7 @@ export default function Component() {
 				</form>
 				<div className="flex flex-col py-12">
 					<p className="text-center">
-						Feedback? Questions? Email us at support@vacationpostcards.com
+						Feedback? Questions? Email us at ocadventurehomes@gmail.com
 					</p>
 				</div>
 			</div>
