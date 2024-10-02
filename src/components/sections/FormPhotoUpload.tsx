@@ -25,7 +25,7 @@ export default function FormPhotoUpload({
 				htmlFor="Images"
 				className="block text-sm font-medium text-gray-700"
 			>
-				Photos
+				Add photos
 			</label>
 			<p className="mt-2 text-sm text-gray-500">Optional - max 2</p>
 			<div className="mt-1">

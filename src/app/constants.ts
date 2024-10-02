@@ -10,3 +10,10 @@ export const entryIdMapping = {
 	imageOneUrl: "1414496154",
 	imageTwoUrl: "877082837",
 };
+
+export const templateUrlMapping: Record<string, string> = {
+	template1:
+		"https://res.cloudinary.com/djxfhec23/image/upload/v1727845060/memory-mailer/template1_a3bply.png",
+	template2:
+		"https://res.cloudinary.com/djxfhec23/image/upload/v1727845063/memory-mailer/template2_xzztyk.png",
+};

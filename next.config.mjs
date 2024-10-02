@@ -8,6 +8,7 @@ const nextConfig = {
 			{ hostname: "images.unsplash.com" },
 			{ hostname: "images.pexels.com" },
 			{ hostname: "utfs.io" },
+			{ hostname: "res.cloudinary.com" },
 		],
 	},
 };

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { FormData } from "@app/types";
 import { entryIdMapping, googleFormId } from "@app/constants";
 import FormPhotoUpload from "@components/sections/FormPhotoUpload";
+import FormTemplatePicker from "../../components/sections/FormTemplatePicker";
 
 export default function Component() {
 	const [senderName, setSenderName] = useState("");
 	const [recipientName, setRecipientName] = useState("");
 	const [recipientAddress, setRecipientAddress] = useState("");
 	const [message, setMessage] = useState("");
-	const [template, setTemplate] = useState("template_1");
+	const [template, setTemplate] = useState("template1");
 
 	const [imageOneUrl, setImageOneUrl] = useState("");
 	const [imageTwoUrl, setImageTwoUrl] = useState("");
@@ -193,6 +194,7 @@ export default function Component() {
 							</p>
 						</div>
 					</div>
+					<FormTemplatePicker template={template} setTemplate={setTemplate} />
 					<FormPhotoUpload
 						imageOneUrl={imageOneUrl}
 						setImageOneUrl={setImageOneUrl}
@@ -201,6 +203,7 @@ export default function Component() {
 						handleDeleteImage={handleDeleteImage}
 						allowUpload={allowUpload}
 					/>
+
 					<div className="flex items-center justify-end">
 						<button
 							type="submit"
