@@ -6,6 +6,13 @@ import "./globals.css";
 export const metadata: Metadata = {
 	title: "Vacation Postcards",
 	description: "Share your vacation adventure memories via a themed postcard.",
+	icons: [
+		{
+			rel: "icon",
+			type: "image/svg+xml",
+			url: "/favicon.svg",
+		},
+	],
 };
 
 export default function RootLayout({
