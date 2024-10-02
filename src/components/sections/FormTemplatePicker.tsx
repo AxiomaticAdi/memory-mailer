@@ -1,5 +1,11 @@
 import Image from "next/image";
+import { useState } from "react";
+import { Search } from "lucide-react";
 import { templateUrlMapping } from "@app/constants";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { DialogTitle } from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface FormTemplatePickerProps {
 	template: string;
@@ -10,6 +16,8 @@ export default function FormTemplatePicker({
 	template,
 	setTemplate,
 }: FormTemplatePickerProps) {
+	const [openModal, setOpenModal] = useState<string | null>(null);
+
 	return (
 		<div>
 			<label className="block text-sm font-medium text-gray-700">
@@ -19,10 +27,10 @@ export default function FormTemplatePicker({
 				{["template1", "template2"].map((t) => (
 					<div
 						key={t}
-						className={`border-2 rounded-md cursor-pointer ${
+						className={`relative rounded-md cursor-pointer border-2 ${
 							template === t
-								? "border-primary-500 ring-2 ring-primary-500"
-								: "border-gray-300"
+								? "border-primary ring-2 ring-primary"
+								: "border-background"
 						}`}
 						onClick={() => setTemplate(t)}
 					>
@@ -33,8 +41,38 @@ export default function FormTemplatePicker({
 							height={200}
 							className="rounded-md"
 						/>
+						<Button
+							type="button"
+							variant="ghost"
+							size="icon"
+							className="absolute top-1 right-1 bg-white bg-opacity-75 rounded-full p-1 shadow-md max-h-8 max-w-8"
+							onClick={() => {
+								setOpenModal(t);
+							}}
+						>
+							<Search size={16} className="text-gray-600" />
+						</Button>
 					</div>
 				))}
+				<Dialog
+					open={openModal !== null}
+					onOpenChange={(open) => setOpenModal(open ? openModal : null)}
+				>
+					<VisuallyHidden>
+						<DialogTitle title={`magnified view ${template}`} />
+					</VisuallyHidden>
+					<DialogContent className="sm:max-w-[800px] rounded-md">
+						{openModal && (
+							<Image
+								src={templateUrlMapping[openModal]}
+								alt={`Postcard ${openModal}`}
+								width={800}
+								height={533}
+								className="rounded-md"
+							/>
+						)}
+					</DialogContent>
+				</Dialog>
 			</div>
 		</div>
 	);
