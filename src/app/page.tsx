@@ -30,21 +30,21 @@ export default function home() {
 							<PaletteIcon className="w-8 h-8 text-primary" />
 							<FeatureDescription
 								title="Choose from beautiful postcard templates"
-								description="Select from our curated collection of postcard designs to capture your vacation memories."
+								description="Select from our collection of themed postcard designs to capture your vacation memories."
 							/>
 						</div>
 						<div className="flex items-start gap-4">
 							<PencilIcon className="w-8 h-8 text-primary" />
 							<FeatureDescription
-								title="Add a personal message and recipient address"
-								description="Customize your postcard with a heartfelt message and the address of your loved ones."
+								title="Add a personal touch"
+								description="Customize your postcard with photos and a personal message."
 							/>
 						</div>
 						<div className="flex items-start gap-4">
 							<MailboxIcon className="w-8 h-8 text-primary" />
 							<FeatureDescription
-								title="We'll mail the postcard in a few months"
-								description="Sit back and relax, we'll handle the printing and mailing of your postcard to your recipient."
+								title="We'll handle the logistics"
+								description="Sit back and relax, we'll handle printing and mailing your postcard to your recipient."
 							/>
 						</div>
 					</div>
