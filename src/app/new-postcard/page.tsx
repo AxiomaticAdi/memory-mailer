@@ -7,7 +7,7 @@ import FormPhotoUpload from "@components/sections/FormPhotoUpload";
 import FormTemplatePicker from "@components/sections/FormTemplatePicker";
 import { Separator } from "@/components/ui/separator";
 
-export default function Component() {
+export default function PostcardPage() {
 	const [senderName, setSenderName] = useState("");
 	const [recipientName, setRecipientName] = useState("");
 	const [recipientAddress, setRecipientAddress] = useState("");
@@ -211,7 +211,7 @@ export default function Component() {
 						<p className="text-center text-lg">Ready to send?</p>
 						<button
 							type="submit"
-							className="bg-green-300 hover:bg-green-500 text-white font-bold py-2 px-4 rounded"
+							className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
 						>
 							Ship it!
 						</button>

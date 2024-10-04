@@ -6,7 +6,7 @@ import PencilIcon from "@/icons/PencilIcon";
 import React from "react";
 import FeatureDescription from "@/components/FeatureDescription";
 
-export default function home() {
+export default function Home() {
 	return (
 		<main className="flex flex-1 w-full justify-center items-center min-h-[100dvh]">
 			<section className="w-full flex justify-center items-center py-12 md:py-24 lg:py-32">
