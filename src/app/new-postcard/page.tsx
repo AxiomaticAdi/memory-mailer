@@ -41,7 +41,7 @@ export default function PostcardPage() {
 			{
 				FieldName: "template",
 				EntryId: entryIdMapping.template,
-				Value: "template_1",
+				Value: template,
 			},
 			{
 				FieldName: "imageOneUrl",
