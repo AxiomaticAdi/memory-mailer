@@ -69,7 +69,7 @@ export default function FormTemplatePicker({
 					<DialogContent className="sm:max-w-[800px] rounded-md">
 						{openModal && (
 							<Image
-								src={templateUrlMappingFull[openModal]}
+								src={templateUrlMapping[openModal]}
 								alt={`Postcard ${openModal}`}
 								width={800}
 								height={533}
