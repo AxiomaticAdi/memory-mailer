@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { templateUrlMappingFull, templateUrlMappingMini } from "@app/constants";
+import { templateUrlMapping } from "@app/constants";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
@@ -18,13 +18,18 @@ export default function FormTemplatePicker({
 }: FormTemplatePickerProps) {
 	const [openModal, setOpenModal] = useState<string | null>(null);
 
+	const getTemplateMiniUrl = (template: string) => {
+		const url = templateUrlMapping[template];
+		return url ? url.replace("/upload/", `/upload/w_300/`) : "";
+	};
+
 	return (
 		<div>
 			<label className="block text-sm font-medium text-gray-700">
 				Pick a template
 			</label>
 			<div className="mt-1 grid grid-cols-2 gap-2">
-				{["template1", "template2"].map((t) => (
+				{Object.keys(templateUrlMapping).map((t) => (
 					<div
 						key={t}
 						className={`relative rounded-md cursor-pointer border-2 ${
@@ -35,7 +40,7 @@ export default function FormTemplatePicker({
 						onClick={() => setTemplate(t)}
 					>
 						<Image
-							src={templateUrlMappingMini[t]}
+							src={getTemplateMiniUrl(t)}
 							alt={`Postcard ${t}`}
 							width={300}
 							height={200}
