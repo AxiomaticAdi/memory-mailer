@@ -3,7 +3,6 @@ import MailboxIcon from "@/icons/MailboxIcon";
 import PaletteIcon from "@/icons/PaletteIcon";
 import PencilIcon from "@/icons/PencilIcon";
 
-import React from "react";
 import FeatureDescription from "@/components/FeatureDescription";
 
 export default function Home() {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FormData } from "@app/types";
 import { entryIdMapping, googleFormId } from "@app/constants";
 import FormPhotoUpload from "@components/sections/FormPhotoUpload";
@@ -8,6 +9,7 @@ import FormTemplatePicker from "@components/sections/FormTemplatePicker";
 import { Separator } from "@/components/ui/separator";
 
 export default function PostcardPage() {
+	const router = useRouter();
 	const [senderName, setSenderName] = useState("");
 	const [recipientName, setRecipientName] = useState("");
 	const [recipientAddress, setRecipientAddress] = useState("");
@@ -17,7 +19,7 @@ export default function PostcardPage() {
 	const [imageOneUrl, setImageOneUrl] = useState("");
 	const [imageTwoUrl, setImageTwoUrl] = useState("");
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const formId = googleFormId;
@@ -62,21 +64,27 @@ export default function PostcardPage() {
 
 		const submitEndpoint = `${process.env.NEXT_PUBLIC_BACKEND_URL}/google-forms`;
 
-		fetch(submitEndpoint, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ formData, formId }),
-		})
-			.then((response) => response.json())
-			.then((data) => console.log(data));
+		try {
+			const response = await fetch(submitEndpoint, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ formData, formId }),
+			});
 
-		alert("Your postcard will be mailed shortly!");
+			if (!response.ok) {
+				throw new Error("Failed to submit the form");
+			}
 
-		console.log(JSON.stringify({ formData, formId }));
+			// const data = await response.json();
+			// console.log(data);
 
-		return resetForm();
+			router.push("/submit-success");
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			alert("An error occurred while submitting the form. Please try again.");
+		}
 	};
 
 	const resetForm = () => {
