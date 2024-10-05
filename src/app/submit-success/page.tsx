@@ -1,4 +1,8 @@
-import LottieBB8 from "@/components/LottieBB8";
+import dynamic from "next/dynamic";
+
+const LottieBB8 = dynamic(() => import("@/components/LottieBB8"), {
+	ssr: false,
+});
 
 export default function SubmitSuccessPage() {
 	return (

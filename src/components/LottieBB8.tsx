@@ -2,7 +2,7 @@
 
 import React from "react";
 import Lottie from "react-lottie-player";
-import animationData from "@app/animations/LottieBB8.json";
+import animationData from "@components/animations/LottieBB8.json";
 
 export default function LottieAnimation() {
 	return (
