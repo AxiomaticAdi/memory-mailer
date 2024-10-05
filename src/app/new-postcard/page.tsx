@@ -87,16 +87,16 @@ export default function PostcardPage() {
 		}
 	};
 
-	const resetForm = () => {
-		setSenderName("");
-		setRecipientName("");
-		setRecipientAddress("");
-		setMessage("");
-		setTemplate("template_1");
+	// const resetForm = () => {
+	// 	setSenderName("");
+	// 	setRecipientName("");
+	// 	setRecipientAddress("");
+	// 	setMessage("");
+	// 	setTemplate("template_1");
 
-		setImageOneUrl("");
-		setImageTwoUrl("");
-	};
+	// 	setImageOneUrl("");
+	// 	setImageTwoUrl("");
+	// };
 
 	const allowUpload = !imageOneUrl || !imageTwoUrl;
 
