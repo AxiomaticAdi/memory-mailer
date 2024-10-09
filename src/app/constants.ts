@@ -18,4 +18,6 @@ export const templateUrlMapping: Record<string, string> = {
 		"https://res.cloudinary.com/djxfhec23/image/upload/v1728017478/memory-mailer/2_eks4ri.png",
 	template3:
 		"https://res.cloudinary.com/djxfhec23/image/upload/v1728017478/memory-mailer/3_ruytfn.png",
+	template4:
+		"https://res.cloudinary.com/djxfhec23/image/upload/v1728450218/memory-mailer/MilleniumFalconV01_tqg1xv.png",
 };
